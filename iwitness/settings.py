@@ -124,3 +124,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# Overriding Auth User
+AUTH_USER_MODEL = 'accounts.User'
+
+
+# Tweaking Auth Backend
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
