@@ -1,4 +1,5 @@
 .idea/
 __pycache__/
 migrations/
-!migrations/__init__.py
+!migrations/__init__
+iWitness_env/
