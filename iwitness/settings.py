@@ -38,15 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-<<<<<<< HEAD
-    'social_django',
-=======
     #local apps
     'accounts',
     'officers',
     'witness',
     'reports',
->>>>>>> develop
 ]
 
 MIDDLEWARE = [
