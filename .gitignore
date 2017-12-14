@@ -4,3 +4,4 @@ migrations/
 !migrations/__init__.py
 iwitness-venv/
 iWitness_env/
+db.sqlite3
