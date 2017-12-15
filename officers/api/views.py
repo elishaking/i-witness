@@ -1,7 +1,7 @@
 from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView
 
 from ..models import Officer
-from .serializers import OfficerSerializer
+from .serializers import OfficerSerializer, OfficerCreateSerializer
 
 from rest_framework.views import APIView
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
@@ -33,7 +33,7 @@ class OfficerCreateAPIView(CreateAPIView):
     This class API view is responsible for creating a new account
     """
     queryset = Officer.objects.all()
-    serializer_class = OfficerSerializer
+    serializer_class = OfficerCreateSerializer
 
 
 class OfficerLoginAPIView(APIView):
