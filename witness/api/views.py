@@ -1,7 +1,7 @@
 from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView
 
 from ..models import Witness
-from .serializers import WitnessSerializer
+from .serializers import WitnessSerializer, WitnessCreateSerializer
 
 from rest_framework.views import APIView
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
@@ -33,7 +33,7 @@ class WitnessCreateAPIView(CreateAPIView):
     This class API view is responsible for creating a new account
     """
     queryset = Witness.objects.all()
-    serializer_class = WitnessSerializer
+    serializer_class = WitnessCreateSerializer
 
 
 class WitnessLoginAPIView(APIView):

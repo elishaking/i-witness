@@ -6,5 +6,5 @@ from reports.models import Report
 
 
 class Witness(models.Model):
-    account = models.ForeignKey(User, related_name='witness')
+    account = models.OneToOneField(User, related_name='witness')
     reports = models.ForeignKey(Report, null=True)

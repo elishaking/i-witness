@@ -1,11 +1,9 @@
 from rest_framework import serializers
 
-from ..models import Officer
-
 from django.contrib.auth import get_user_model
 from django.db.models import Q
 
-from ..models import User
+from ..models import Officer
 
 # class OfficerSerializer(serializers.ModelSerializer):
 #     class Meta:
@@ -18,7 +16,7 @@ User_ = get_user_model()
 
 class OfficerSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
+        model = Officer
         fields = ['first_name', 'last_name', 'email', 'id', 'gender', 'phone_number', 'image', 'activity']
 
 
@@ -26,7 +24,7 @@ class OfficerCreateSerializer(serializers.ModelSerializer):
     email_confirm = serializers.EmailField(label='Confirm Email')
 
     class Meta:
-        model = User
+        model = Officer
         fields = ['id', 'email', 'email_confirm', 'password', 'first_name', 'last_name', 'phone_number', 'gender']
 
     def create(self, validated_data):
@@ -72,7 +70,7 @@ class OfficerLoginSerializer(serializers.ModelSerializer):
     # email = serializers.EmailField()
 
     class Meta:
-        model = User
+        model = Officer
         fields = ['auth_field', 'password', 'token']
 
         extra_kwargs = {

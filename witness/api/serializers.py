@@ -2,8 +2,6 @@ from rest_framework import serializers
 
 from ..models import Witness
 
-
-from ..models import User
 from django.contrib.auth import get_user_model
 from django.db.models import Q
 
@@ -18,7 +16,7 @@ User_ = get_user_model()
 
 class WitnessSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
+        model = Witness
         fields = ['first_name', 'last_name', 'email', 'gender', 'phone_number', 'image']
 
 
@@ -26,7 +24,7 @@ class WitnessCreateSerializer(serializers.ModelSerializer):
     email_confirm = serializers.EmailField(label='Confirm Email')
 
     class Meta:
-        model = User
+        model = Witness
         fields = ['username', 'email', 'email_confirm', 'password', 'first_name', 'last_name', 'phone_number', 'gender']
 
     def create(self, validated_data):
@@ -72,7 +70,7 @@ class WitnessLoginSerializer(serializers.ModelSerializer):
     # email = serializers.EmailField()
 
     class Meta:
-        model = User
+        model = Witness
         fields = ['auth_field', 'password', 'token']
 
         extra_kwargs = {
