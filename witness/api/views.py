@@ -36,16 +36,16 @@ class WitnessCreateAPIView(CreateAPIView):
     serializer_class = WitnessCreateSerializer
 
 
-class WitnessLoginAPIView(APIView):
-    permission_classes = [AllowAny]
-    serializer_class = serializers.WitnessLoginSerializer
-
-    def post(self, request, *args, **kwargs):
-        data = request.data
-        serializer = serializers.WitnessLoginSerializer(data=data)
-
-        if serializer.is_valid(raise_exception=True):
-            data = serializer.data
-            return Response(data, status=HTTP_200_OK)
-
-        return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
+# class WitnessLoginAPIView(APIView):
+#     permission_classes = [AllowAny]
+#     serializer_class = serializers.WitnessLoginSerializer
+#
+#     def post(self, request, *args, **kwargs):
+#         data = request.data
+#         serializer = serializers.WitnessLoginSerializer(data=data)
+#
+#         if serializer.is_valid(raise_exception=True):
+#             data = serializer.data
+#             return Response(data, status=HTTP_200_OK)
+#
+#         return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)

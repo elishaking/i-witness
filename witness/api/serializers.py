@@ -1,6 +1,8 @@
 from rest_framework import serializers
 
 from ..models import Witness
+from accounts.api.serializers import AccountsSerializer, AccountCreateSerializer
+from drf_writable_nested import WritableNestedModelSerializer
 
 from django.contrib.auth import get_user_model
 from django.db.models import Q
@@ -15,53 +17,20 @@ User_ = get_user_model()
 
 
 class WitnessSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Witness
-        fields = ['first_name', 'last_name', 'email', 'gender', 'phone_number', 'image']
-
-
-class WitnessCreateSerializer(serializers.ModelSerializer):
-    email_confirm = serializers.EmailField(label='Confirm Email')
+    account = AccountsSerializer()
 
     class Meta:
         model = Witness
-        fields = ['username', 'email', 'email_confirm', 'password', 'first_name', 'last_name', 'phone_number', 'gender']
+        fields = ['account']
 
-    def create(self, validated_data):
-        user = User_(username=validated_data['username'], email=validated_data['email'],
-                     first_name=validated_data['first_name'], last_name=validated_data['last_name'],
-                     phone_number=validated_data['phone_number'], gender=validated_data['gender'])
 
-        user.set_password(validated_data['password'])
-        user.save()
-        return validated_data
+class WitnessCreateSerializer(WritableNestedModelSerializer):
+    # email_confirm = serializers.EmailField(label='Confirm Email')
+    account = AccountCreateSerializer()
 
-    # General Validation
-    # def validate(self, data):
-    #     email = data['email']
-    #     user_qs = User_.objects.filter(email=email)
-    #     if user_qs.exists():
-    #         raise serializers.ValidationError("This User is already registered")
-    #
-    #     return data
-
-    def validated_email(self, value):
-        email = value
-        user_qs = User_.objects.filter(email=email)
-        if user_qs.exists():
-            raise serializers.ValidationError("This User is already registered")
-
-        return value
-
-    def validate_email_confirm(self, value):
-        data = self.get_initial()
-        email = data.get('email')
-        email_confirm = value
-
-        if email != email_confirm:
-            raise serializers.ValidationError('Emails must match')
-
-        return value
+    class Meta:
+        model = Witness
+        fields = ['account']
 
 
 class WitnessLoginSerializer(serializers.ModelSerializer):
