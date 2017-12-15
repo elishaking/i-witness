@@ -20,7 +20,7 @@ class AccountCreateSerializer(serializers.ModelSerializer):
         model = User
         # fields = ['username', 'email', 'email_confirm', 'password', 'first_name', 'last_name', 'phone_number',
         # 'gender']
-        fields = ['username', 'email', 'password', 'first_name', 'last_name', 'phone_number', 'gender']
+        fields = ['username', 'email', 'password', 'first_name', 'last_name', 'phone_number', 'gender', 'image']
 
     def create(self, validated_data):
         user = User_(username=validated_data['username'], email=validated_data['email'],
