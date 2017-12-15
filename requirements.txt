@@ -22,3 +22,4 @@ urllib3==1.22
 
 dj-database-url==0.4.2
 gunicorn
+psycopg2
