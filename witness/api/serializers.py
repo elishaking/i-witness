@@ -2,7 +2,7 @@ from rest_framework import serializers
 
 from ..models import Witness
 from accounts.models import User
-from accounts.api.serializers import AccountsSerializer, AccountCreateSerializer
+from accounts.api.serializers import AccountsSerializer, AccountCreateSerializer, AccountLoginSerializer
 from drf_writable_nested import WritableNestedModelSerializer
 
 from django.contrib.auth import get_user_model
@@ -33,6 +33,7 @@ class WitnessCreateSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         account_data = validated_data.pop('account')
+        # print(account_data)
         account = User.objects.create(**account_data)
         witness = Witness.objects.create(account=account, **validated_data)
 
@@ -40,7 +41,11 @@ class WitnessCreateSerializer(serializers.ModelSerializer):
 
 
 class WitnessLoginSerializer(serializers.ModelSerializer):
-    pass
+    account = AccountLoginSerializer()
+
+    class Meta:
+        model = Witness
+        fields = ['account']
 
 
 """"""

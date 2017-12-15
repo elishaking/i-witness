@@ -96,7 +96,7 @@ class AccountLoginSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError('Incorrect Credentials, please try again')
 
         if user_obj:
-            if not user_obj.check_password(raw_password=data['password']):
+            if not user[0].password == data['password']:  # user_obj.check_password(raw_password=data['password']):
                 raise serializers.ValidationError("Incorrect Credentials, please try again")
 
         return data
