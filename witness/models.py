@@ -22,11 +22,11 @@ class Witness(models.Model):
 
     def save(self, *args, **kwargs):
         try:
-            db_file = Report.objects.all()
+            db_file = Witness.objects.all()
             if db_file:
                 file_path = os.path.join(settings.MEDIA_ROOT, str(db_file.image))
         except:
             pass
-        super(Report, self).save(*args, **kwargs)
+        super(Witness, self).save(*args, **kwargs)
 
 
