@@ -1,7 +1,6 @@
 from django.db import models
 
 from accounts.models import User
-from reports.models import Report
 
 from django.conf import settings
 import os
