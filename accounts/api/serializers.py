@@ -1,8 +1,9 @@
 from rest_framework import serializers
-from ..models import User
-
+from rest_framework_jwt.settings import api_settings
 from django.contrib.auth import get_user_model
 from django.db.models import Q
+
+from ..models import User
 
 User_ = get_user_model()
 
@@ -10,7 +11,8 @@ User_ = get_user_model()
 class AccountsSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'username', 'email', 'gender', 'phone_number', 'image']
+        fields = ['first_name', 'last_name', 'username', 'email', 'gender', 'phone_number',
+                  'image', 'witness', 'officer']
 
 
 class AccountCreateSerializer(serializers.ModelSerializer):
@@ -63,13 +65,13 @@ class AccountCreateSerializer(serializers.ModelSerializer):
 
 class AccountLoginSerializer(serializers.ModelSerializer):
     token = serializers.CharField(allow_blank=True, read_only=True)
-    auth_field = serializers.CharField(label="Username or Email")
+    auth_field = serializers.CharField(label="Username or Email", write_only=True)
 
     # email = serializers.EmailField()
 
     class Meta:
         model = User
-        fields = ['auth_field', 'password', 'token']
+        fields = ['id', 'auth_field', 'password', 'token']
 
         extra_kwargs = {
             'password': {
@@ -98,6 +100,13 @@ class AccountLoginSerializer(serializers.ModelSerializer):
         if user_obj:
             if not user[0].password == data['password']:  # user_obj.check_password(raw_password=data['password']):
                 raise serializers.ValidationError("Incorrect Credentials, please try again")
+
+        jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
+        jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
+
+        payload = jwt_payload_handler(user_obj)
+        data['token'] = jwt_encode_handler(payload)
+        data['id'] = user_obj.witness.id or user_obj.officer.id
 
         return data
 

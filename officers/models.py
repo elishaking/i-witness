@@ -10,7 +10,7 @@ from django.urls import reverse
 
 
 class Officer(models.Model):
-    account = models.ForeignKey(User, related_name='officers')
+    account = models.OneToOneField(User)
     id = models.CharField(primary_key=True, max_length=30, help_text='Enter unique Police id')
     activity = models.CharField(max_length=200)
 
