@@ -3,6 +3,8 @@ from django.db import models
 from django.conf import settings
 import os
 
+from witness.models import Witness
+
 from django.urls import reverse
 # Create your models here.
 
@@ -20,6 +22,7 @@ class Media(models.Model):
 
 
 class Report(models.Model):
+    witness = models.ForeignKey(Witness, related_name='reports')
     title = models.CharField(max_length=50)
     message = models.CharField(max_length=250)
     location = models.CharField(max_length=100)

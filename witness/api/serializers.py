@@ -3,10 +3,7 @@ from rest_framework import serializers
 from ..models import Witness
 from accounts.models import User
 from accounts.api.serializers import AccountsSerializer, AccountCreateSerializer, AccountLoginSerializer
-from drf_writable_nested import WritableNestedModelSerializer
-
-from django.contrib.auth import get_user_model
-from django.db.models import Q
+from reports.api.serializers import ReportSerializer
 
 
 # class WitnessSerializer(serializers.ModelSerializer):
@@ -17,10 +14,11 @@ from django.db.models import Q
 
 class WitnessSerializer(serializers.ModelSerializer):
     account = AccountsSerializer()
+    report = ReportSerializer(many=True)
 
     class Meta:
         model = Witness
-        fields = ['account']
+        fields = ['account', 'report']
 
 
 class WitnessCreateSerializer(serializers.ModelSerializer):
