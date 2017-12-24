@@ -15,10 +15,10 @@ class User(AbstractUser):
         ('F', 'Female'),
     )
 
-    first_name = models.CharField(max_length=30, blank=False)
-    last_name = models.CharField(max_length=30, blank=False)
-    gender = models.CharField(max_length=10, choices=GENDERS, default=GENDERS[1][0])
-    phone_number = models.IntegerField(blank=False)
+    first_name = models.CharField(max_length=30, blank=True)
+    last_name = models.CharField(max_length=30, blank=True)
+    gender = models.CharField(max_length=10, choices=GENDERS, default=GENDERS[1][0], blank=True)
+    phone_number = models.IntegerField(blank=True, null=True)
     image = models.ImageField(blank=True, null=True)
 
     def __unicode__(self):
