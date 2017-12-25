@@ -5,8 +5,6 @@ from django.urls import reverse
 
 import os
 
-from media.models import Media
-
 
 class User(AbstractUser):
 
@@ -19,7 +17,7 @@ class User(AbstractUser):
     last_name = models.CharField(max_length=30, blank=True)
     gender = models.CharField(max_length=10, choices=GENDERS, default=GENDERS[1][0], blank=True)
     phone_number = models.IntegerField(blank=True, null=True)
-    image = models.OneToOneField(Media)
+    image = models.FileField()
 
     def __unicode__(self):
         return '%s' % self.first_name
