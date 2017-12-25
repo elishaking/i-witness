@@ -3,3 +3,4 @@ __pycache__/
 iwitness-venv/
 iWitness_env/
 db.sqlite3
+media_files/

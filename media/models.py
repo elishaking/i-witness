@@ -3,7 +3,7 @@ from django.db import models
 
 # Create your models here.
 class Media(models.Model):
-    file = models.FileField()
+    file = models.FileField(blank=True, null=True)
     type = models.CharField(max_length=20, blank=True)
 
     def clean(self):

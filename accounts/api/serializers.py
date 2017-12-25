@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 from django.db.models import Q
 
 from ..models import User
+from media.api.serializers import MediaSerializer
 
 User_ = get_user_model()
 
@@ -17,6 +18,7 @@ class AccountsSerializer(serializers.ModelSerializer):
 
 class AccountCreateSerializer(serializers.ModelSerializer):
     # email_confirm = serializers.EmailField(label='Confirm Email')
+    image = MediaSerializer()
 
     class Meta:
         model = User
@@ -25,13 +27,19 @@ class AccountCreateSerializer(serializers.ModelSerializer):
         fields = ['username', 'email', 'password', 'first_name', 'last_name', 'phone_number', 'gender', 'image']
 
     def create(self, validated_data):
+        # FIXME: THIS METHOD IS NOT CALLED
+        # media_data = validated_data.pop('image')
+        # media = Media.objects.create(**media_data)
+        # print(media)
+
         user = User_(username=validated_data['username'], email=validated_data['email'],
                      first_name=validated_data['first_name'], last_name=validated_data['last_name'],
-                     phone_number=validated_data['phone_number'], gender=validated_data['gender'])
+                     phone_number=validated_data['phone_number'], gender=validated_data['gender'], image=media)
 
         user.set_password(validated_data['password'])
         user.save()
-        return validated_data
+
+        return user
 
     # General Validation
     # def validate(self, data):

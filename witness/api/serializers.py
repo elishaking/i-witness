@@ -2,6 +2,7 @@ from rest_framework import serializers
 
 from ..models import Witness
 from accounts.models import User
+from media.models import Media
 from accounts.api.serializers import AccountsSerializer, AccountCreateSerializer, AccountLoginSerializer
 from reports.api.serializers import ReportSerializer
 
@@ -32,6 +33,9 @@ class WitnessCreateSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         account_data = validated_data.pop('account')
         # print(account_data)
+        media_data = account_data['image']
+        media = Media.objects.create(**media_data)
+        account_data['image'] = media
         account = User.objects.create(**account_data)
         witness = Witness.objects.create(account=account, **validated_data)
 
