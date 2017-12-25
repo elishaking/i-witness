@@ -4,21 +4,10 @@ from django.conf import settings
 import os
 
 from witness.models import Witness
+from media.models import Media
 
 from django.urls import reverse
 # Create your models here.
-
-
-class Media(models.Model):
-    image = models.FileField()
-    audio = models.FileField()
-    video = models.FileField()
-
-    def __unicode__(self):
-        return '%s' % self.image
-
-    def __str__(self):
-        return self.image
 
 
 class Report(models.Model):

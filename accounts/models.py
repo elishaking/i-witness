@@ -1,11 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-
 from django.conf import settings
+from django.urls import reverse
+
 import os
 
-from django.urls import reverse
-# Create your models here.
+from media.models import Media
 
 
 class User(AbstractUser):
@@ -19,7 +19,7 @@ class User(AbstractUser):
     last_name = models.CharField(max_length=30, blank=True)
     gender = models.CharField(max_length=10, choices=GENDERS, default=GENDERS[1][0], blank=True)
     phone_number = models.IntegerField(blank=True, null=True)
-    image = models.ImageField(blank=True, null=True)
+    image = models.ForeignKey(Media, blank=True, null=True)
 
     def __unicode__(self):
         return '%s' % self.first_name

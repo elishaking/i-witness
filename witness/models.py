@@ -11,7 +11,6 @@ from django.urls import reverse
 
 class Witness(models.Model):
     account = models.OneToOneField(User)
-    # reports = models.ForeignKey(Report, null=True)
 
     def __unicode__(self):
         return '%s' % self.account
