@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'officers',
     'witness',
     'reports',
+    'media',
 ]
 
 REST_FRAMEWORK = {

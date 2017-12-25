@@ -14,11 +14,11 @@ from reports.api.serializers import ReportSerializer
 
 class WitnessSerializer(serializers.ModelSerializer):
     account = AccountsSerializer()
-    report = ReportSerializer(many=True)
+    # reports = ReportSerializer(many=True)
 
     class Meta:
         model = Witness
-        fields = ['account', 'report']
+        fields = ['account', 'reports']
 
 
 class WitnessCreateSerializer(serializers.ModelSerializer):
