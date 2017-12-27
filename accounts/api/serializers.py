@@ -4,7 +4,6 @@ from django.contrib.auth import get_user_model
 from django.db.models import Q
 
 from ..models import User
-from media.api.serializers import MediaSerializer
 
 User_ = get_user_model()
 
@@ -12,14 +11,12 @@ User_ = get_user_model()
 class AccountsSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'username', 'email', 'gender', 'phone_number',
+        fields = ['id', 'first_name', 'last_name', 'username', 'email', 'gender', 'phone_number',
                   'image', 'witness', 'officer']
 
 
 class AccountCreateSerializer(serializers.ModelSerializer):
     # email_confirm = serializers.EmailField(label='Confirm Email')
-    image = MediaSerializer()
-
     class Meta:
         model = User
         # fields = ['username', 'email', 'email_confirm', 'password', 'first_name', 'last_name', 'phone_number',

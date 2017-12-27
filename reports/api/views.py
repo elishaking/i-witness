@@ -1,7 +1,7 @@
 from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView
 
 from ..models import Report
-from .serializers import ReportSerializer, MediaSerializer
+from .serializers import ReportSerializer, ReportCreateSerializer
 
 
 # Report api
@@ -28,4 +28,4 @@ class ReportCreateAPIView(CreateAPIView):
     This class API view is responsible for creating a new account
     """
     queryset = Report.objects.all()
-    serializer_class = ReportSerializer
+    serializer_class = ReportCreateSerializer

@@ -2,14 +2,23 @@ from rest_framework import serializers
 
 from ..models import Report
 from media.api.serializers import MediaSerializer
+# from witness.api.serializers import WitnessSerializer
 
 
 class ReportSerializer(serializers.ModelSerializer):
-    media = MediaSerializer(many=True)
+    # media = MediaSerializer(many=True)
 
     class Meta:
         model = Report
-        fields = ['title', 'message', 'location', 'media']
+        fields = ['id', 'title', 'message', 'location']
+
+
+class ReportCreateSerializer(serializers.ModelSerializer):
+    # media = MediaSerializer(many=True)
+
+    class Meta:
+        model = Report
+        fields = ['title', 'message', 'location']
 
 
 """"""
