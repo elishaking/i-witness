@@ -43,11 +43,12 @@ class WitnessCreateSerializer(serializers.ModelSerializer):
 
 
 class WitnessLoginSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(read_only=True)
     account = AccountLoginSerializer()
 
     class Meta:
         model = Witness
-        fields = ['account']
+        fields = ['id', 'account']
 
 
 """"""

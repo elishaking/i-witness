@@ -12,7 +12,7 @@ class MediaSerializer(serializers.ModelSerializer):
 class MediaCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Media
-        fields = ['file']  # , 'report']
+        fields = ['file', 'filename', 'report']
 
 
 """"""
