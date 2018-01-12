@@ -1,4 +1,5 @@
 from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView
+from rest_framework.permissions import AllowAny
 
 from ..models import Report
 from .serializers import ReportSerializer, ReportCreateSerializer
@@ -29,3 +30,4 @@ class ReportCreateAPIView(CreateAPIView):
     """
     queryset = Report.objects.all()
     serializer_class = ReportCreateSerializer
+    permission_classes = [AllowAny]
