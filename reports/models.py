@@ -7,7 +7,7 @@ class Report(models.Model):
     title = models.CharField(max_length=50)
     message = models.CharField(max_length=250)
     location = models.CharField(max_length=100)
-    witness = models.ForeignKey(Witness, related_name='reports')
+    witness = models.ForeignKey(Witness, related_name='reports', null=True)
 
     def __unicode__(self):
         return '%s' % self.title

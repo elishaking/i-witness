@@ -6,7 +6,13 @@ from ..models import Media
 class MediaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Media
-        fields = ['file']
+        fields = ['id', 'file']  # , 'type', 'report']
+
+
+class MediaCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Media
+        fields = ['file']  # , 'report']
 
 
 """"""

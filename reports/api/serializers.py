@@ -10,15 +10,16 @@ class ReportSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Report
-        fields = ['id', 'title', 'message', 'location']
+        fields = ['id', 'title', 'message', 'location', 'witness']
 
 
 class ReportCreateSerializer(serializers.ModelSerializer):
     # media = MediaSerializer(many=True)
+    id = serializers.IntegerField(read_only=True)
 
     class Meta:
         model = Report
-        fields = ['title', 'message', 'location']
+        fields = ['id', 'title', 'message', 'location', 'witness']
 
 
 """"""

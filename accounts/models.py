@@ -17,22 +17,22 @@ class User(AbstractUser):
     last_name = models.CharField(max_length=30, blank=True)
     gender = models.CharField(max_length=10, choices=GENDERS, default=GENDERS[1][0], blank=True)
     phone_number = models.IntegerField(blank=True, null=True)
-    image = models.FileField()
+    image = models.FileField(null=True)
 
     def __unicode__(self):
-        return '%s' % self.first_name
+        return '%s' % self.username
 
     def __str__(self):
-        return self.first_name
+        return self.username
 
-    def save(self, *args, **kwargs):
-        try:
-            db_file = User.objects.all()
-            if db_file:
-                file_path = os.path.join(settings.MEDIA_ROOT, str(db_file.image))
-        except:
-            pass
-        super(User, self).save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     try:
+    #         db_file = User.objects.all()
+    #         if db_file:
+    #             file_path = os.path.join(settings.MEDIA_ROOT, str(db_file.image))
+    #     except:
+    #         pass
+    #     super(User, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('users:detail', kwargs={'pk': self.pk})

@@ -22,7 +22,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/officers/', include('officers.api.urls', namespace='officers')),
     url(r'^api/reports/', include('reports.api.urls', namespace='reports')),
-    url(r'^api/witness/', include('witness.api.urls', namespace='witness'))
+    url(r'^api/witness/', include('witness.api.urls', namespace='witness')),
+    url(r'^api/media/', include('media.api.urls', namespace='media'))
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

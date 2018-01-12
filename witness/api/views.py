@@ -30,7 +30,7 @@ class WitnessRetrieveAPIView(RetrieveAPIView):
 
 class WitnessCreateAPIView(CreateAPIView):
     """
-    This class API view is responsible for creating a new account
+    This class API view is responsible for creating a new witness
     """
     queryset = Witness.objects.all()
     serializer_class = WitnessCreateSerializer
