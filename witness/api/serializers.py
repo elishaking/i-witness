@@ -22,6 +22,14 @@ class WitnessSerializer(serializers.ModelSerializer):
         fields = ['account', 'reports']
 
 
+class WitnessEditSerializer(serializers.ModelSerializer):
+    account = AccountsSerializer()
+
+    class Meta:
+        model = Witness
+        fields = ['account']
+
+
 class WitnessCreateSerializer(serializers.ModelSerializer):
     # email_confirm = serializers.EmailField(label='Confirm Email')
     account = AccountCreateSerializer()

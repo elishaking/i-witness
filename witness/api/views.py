@@ -1,7 +1,7 @@
-from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, UpdateAPIView
 
 from ..models import Witness
-from .serializers import WitnessSerializer, WitnessCreateSerializer
+from .serializers import WitnessSerializer, WitnessCreateSerializer, WitnessEditSerializer
 
 from rest_framework.views import APIView
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
@@ -26,6 +26,15 @@ class WitnessRetrieveAPIView(RetrieveAPIView):
     """
     queryset = Witness.objects.all()
     serializer_class = WitnessSerializer
+
+
+class WitnessEditAPIView(UpdateAPIView):
+    """
+    This class API view is responsible for updating
+    a single object/row in the table
+    """
+    queryset = Witness.objects.all()
+    serializer_class = WitnessEditSerializer
 
 
 class WitnessCreateAPIView(CreateAPIView):

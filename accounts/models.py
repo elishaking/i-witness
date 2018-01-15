@@ -3,11 +3,12 @@ from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 from django.urls import reverse
 
-import os
+from iwitness.settings import MEDIA_ROOT
+
+import base64
 
 
 class User(AbstractUser):
-
     GENDERS = (
         ('M', 'Male'),
         ('F', 'Female'),
@@ -16,7 +17,7 @@ class User(AbstractUser):
     first_name = models.CharField(max_length=30, blank=True)
     last_name = models.CharField(max_length=30, blank=True)
     gender = models.CharField(max_length=10, choices=GENDERS, default=GENDERS[1][0], blank=True)
-    phone_number = models.IntegerField(blank=True, null=True)
+    phone_number = models.IntegerField()  # FIXME: MAKE UNIQUE
     image = models.FileField(null=True)
 
     def __unicode__(self):
@@ -25,15 +26,17 @@ class User(AbstractUser):
     def __str__(self):
         return self.username
 
-    # def save(self, *args, **kwargs):
-    #     try:
-    #         db_file = User.objects.all()
-    #         if db_file:
-    #             file_path = os.path.join(settings.MEDIA_ROOT, str(db_file.image))
-    #     except:
-    #         pass
-    #     super(User, self).save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        super(User, self).save()
+        if self.image:
+            data = str(self.image).replace('data:image/jpeg;base64,', '').encode()
+            filename = User.objects.filter(phone_number=self.phone_number).pk
+            print(filename)
+            with open(MEDIA_ROOT + "/account_avatar/" + filename, "wb") as fh:
+                fh.write(base64.decodebytes(data))
 
     def get_absolute_url(self):
         return reverse('users:detail', kwargs={'pk': self.pk})
 
+
+""""""
