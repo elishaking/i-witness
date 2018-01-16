@@ -3,7 +3,7 @@ from rest_framework import serializers
 from ..models import Witness
 from accounts.models import User
 from media.models import Media
-from accounts.api.serializers import AccountsSerializer, AccountCreateSerializer, AccountLoginSerializer
+from accounts.api.serializers import AccountSerializer, AccountCreateSerializer, AccountLoginSerializer
 from reports.api.serializers import ReportSerializer
 
 
@@ -14,7 +14,7 @@ from reports.api.serializers import ReportSerializer
 
 
 class WitnessSerializer(serializers.ModelSerializer):
-    account = AccountsSerializer()
+    account = AccountSerializer()
     # reports = ReportSerializer(many=True)
 
     class Meta:
@@ -23,7 +23,7 @@ class WitnessSerializer(serializers.ModelSerializer):
 
 
 class WitnessEditSerializer(serializers.ModelSerializer):
-    account = AccountsSerializer()
+    account = AccountSerializer()
 
     class Meta:
         model = Witness
@@ -51,7 +51,6 @@ class WitnessCreateSerializer(serializers.ModelSerializer):
 
 
 class WitnessLoginSerializer(serializers.ModelSerializer):
-    id = serializers.IntegerField(read_only=True)
     account = AccountLoginSerializer()
 
     class Meta:

@@ -8,7 +8,13 @@ from ..models import User
 User_ = get_user_model()
 
 
-class AccountsSerializer(serializers.ModelSerializer):
+class AccountSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['phone_number', 'image']
+
+
+class AccountEditSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'first_name', 'last_name', 'username', 'email', 'gender', 'phone_number',
@@ -69,6 +75,7 @@ class AccountCreateSerializer(serializers.ModelSerializer):
 
 
 class AccountLoginSerializer(serializers.ModelSerializer):
+    owner_id = serializers.IntegerField(allow_null=True, read_only=True)
     token = serializers.CharField(allow_blank=True, read_only=True)
     auth_field = serializers.CharField(label="Username or Email", write_only=True)
 
@@ -76,7 +83,7 @@ class AccountLoginSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id', 'auth_field', 'password', 'token']
+        fields = ['owner_id', 'auth_field', 'password', 'token']
 
         extra_kwargs = {
             'password': {

@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^api/accounts/', include('media.api.urls', namespace='media')),
+    url(r'^api/accounts/', include('accounts.api.urls', namespace='accounts')),
     url(r'^api/officers/', include('officers.api.urls', namespace='officers')),
     url(r'^api/reports/', include('reports.api.urls', namespace='reports')),
     url(r'^api/witness/', include('witness.api.urls', namespace='witness')),

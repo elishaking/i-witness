@@ -1,7 +1,7 @@
 from rest_framework.generics import ListAPIView, RetrieveAPIView, UpdateAPIView
 
 from ..models import User
-from .serializers import AccountsSerializer
+from .serializers import AccountSerializer, AccountEditSerializer
 
 
 class AccountListAPIView(ListAPIView):
@@ -10,7 +10,7 @@ class AccountListAPIView(ListAPIView):
     the entire table content
     """
     queryset = User.objects.all()
-    serializer_class = AccountsSerializer
+    serializer_class = AccountSerializer
 
 
 class AccountRetrieveAPIView(RetrieveAPIView):
@@ -19,7 +19,7 @@ class AccountRetrieveAPIView(RetrieveAPIView):
     a single object/row in the table
     """
     queryset = User.objects.all()
-    serializer_class = AccountsSerializer
+    serializer_class = AccountSerializer
 
 
 class AccountEditAPIView(UpdateAPIView):
@@ -28,6 +28,6 @@ class AccountEditAPIView(UpdateAPIView):
     a single object/row in the table
     """
     queryset = User.objects.all()
-    serializer_class = AccountsSerializer
+    serializer_class = AccountEditSerializer
 
 

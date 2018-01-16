@@ -18,7 +18,7 @@ class User(AbstractUser):
     last_name = models.CharField(max_length=30, blank=True)
     gender = models.CharField(max_length=10, choices=GENDERS, default=GENDERS[1][0], blank=True)
     phone_number = models.IntegerField()  # FIXME: MAKE UNIQUE
-    image = models.FileField(null=True)
+    image = models.CharField(max_length=10**20, blank=True)
 
     def __unicode__(self):
         return '%s' % self.username
@@ -29,6 +29,7 @@ class User(AbstractUser):
     def save(self, *args, **kwargs):
         super(User, self).save()
         if self.image:
+            print(self.image)
             data = str(self.image).replace('data:image/jpeg;base64,', '').encode()
             filename = User.objects.filter(phone_number=self.phone_number).pk
             print(filename)
