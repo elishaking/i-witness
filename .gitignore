@@ -4,6 +4,8 @@ iwitness-venv/
 iWitness_env/
 db.sqlite3
 media_files/
+!media_files/images/in.txt
+!media_files/account_avatar/in.txt
 migrations/
 !reports/migrations/__init__.py
 !accounts/migrations/__init__.py
