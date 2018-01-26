@@ -3,10 +3,13 @@ __pycache__/
 iwitness-venv/
 iWitness_env/
 db.sqlite3
-media_files/
-!media_files/images/in.txt
-!media_files/account_avatar/in.txt
-migrations/
+media_files/images/*.jpg
+media_files/account_avatar/*jpg
+reports/migrations/*.py
+accounts/migrations/*.py
+witness/migrations/*.py
+officers/migrations/*.py
+media/migrations/*.py
 !reports/migrations/__init__.py
 !accounts/migrations/__init__.py
 !witness/migrations/__init__.py
