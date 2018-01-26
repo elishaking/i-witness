@@ -4,3 +4,9 @@ iwitness-venv/
 iWitness_env/
 db.sqlite3
 media_files/
+migrations/
+!reports/migrations/__init__.py
+!accounts/migrations/__init__.py
+!witness/migrations/__init__.py
+!officers/migrations/__init__.py
+!media/migrations/__init__.py

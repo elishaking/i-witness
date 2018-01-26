@@ -5,7 +5,7 @@ from witness.models import Witness
 
 class Report(models.Model):
     title = models.CharField(max_length=50)
-    message = models.CharField(max_length=250)
+    message = models.CharField(max_length=250, blank=True)
     location = models.CharField(max_length=100)
     witness = models.ForeignKey(Witness, related_name='reports', null=True)
 
