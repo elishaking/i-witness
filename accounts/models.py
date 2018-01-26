@@ -29,11 +29,12 @@ class User(AbstractUser):
     def save(self, *args, **kwargs):
         super(User, self).save()
         if self.image:
-            print(self.image)
+            print('image:', self.image)
             data = str(self.image).replace('data:image/jpeg;base64,', '').encode()
-            filename = User.objects.filter(phone_number=self.phone_number).pk
-            print(filename)
-            with open(MEDIA_ROOT + "/account_avatar/" + filename, "wb") as fh:
+            filename = User.objects.filter(phone_number=self.phone_number)
+            # print(filename)
+            filename = filename[0].id
+            with open(MEDIA_ROOT + "/account_avatar/" + str(filename) + '.jpg', "wb") as fh:
                 fh.write(base64.decodebytes(data))
 
     def get_absolute_url(self):

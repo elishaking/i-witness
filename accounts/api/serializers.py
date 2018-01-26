@@ -11,14 +11,14 @@ User_ = get_user_model()
 class AccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['phone_number', 'image']
+        fields = ['id', 'first_name', 'last_name', 'username', 'email', 'gender', 'phone_number',
+                  'image', 'witness', 'officer']
 
 
 class AccountEditSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'first_name', 'last_name', 'username', 'email', 'gender', 'phone_number',
-                  'image', 'witness', 'officer']
+        fields = ['phone_number', 'image']
 
 
 class AccountCreateSerializer(serializers.ModelSerializer):
@@ -118,7 +118,7 @@ class AccountLoginSerializer(serializers.ModelSerializer):
 
         payload = jwt_payload_handler(user_obj)
         data['token'] = jwt_encode_handler(payload)
-        data['id'] = user_obj.witness.id or user_obj.officer.id
+        data['owner_id'] = user_obj.witness.id or user_obj.officer.id
 
         return data
 

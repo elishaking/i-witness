@@ -19,7 +19,7 @@ class WitnessSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Witness
-        fields = ['account', 'reports']
+        fields = ['id', 'account', 'reports']
 
 
 class WitnessEditSerializer(serializers.ModelSerializer):
