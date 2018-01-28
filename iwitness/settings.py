@@ -163,8 +163,8 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 STATIC_URL = '/static/'
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_dev'), ]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_files')
@@ -184,7 +184,4 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 heroku = True
 if heroku:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
     DATABASES['default'].update(dj_database_url.config(conn_max_age=500))
-else:
-    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
