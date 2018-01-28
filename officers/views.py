@@ -8,3 +8,7 @@ def dashboard(request):
 
 def profile(request):
     return render(request, 'profile.html', {'first_name': 'King', 'last_name': 'Elisha'})
+
+
+def reports(request):
+    return render(request, 'reports.html', {'first_name': 'King', 'last_name': 'Elisha'})
