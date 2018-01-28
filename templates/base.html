@@ -50,7 +50,7 @@
 
                     <ul class="nav">
                         <li class="active">
-                            <a href="dashboard.html">
+                            <a href="{% url 'officers:dashboard' %}">
                                 <i class="pe-7s-graph"></i>
                                 <p>Dashboard</p>
                             </a>
@@ -58,7 +58,7 @@
                         <li>
                             <a href="{% url 'officers:profile' %}">
                                 <i class="pe-7s-user"></i>
-                                <p>User Profile</p>
+                                <p>Profile</p>
                             </a>
                         </li>
                         <li>
@@ -180,7 +180,7 @@
                         </div>
                     </div>
                 </nav>
-                
+
                 {% block main_content %}
 
                 {% endblock %}
