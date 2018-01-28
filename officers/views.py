@@ -7,4 +7,4 @@ def dashboard(request):
 
 
 def profile(request):
-    return render(request, 'profile.html', {})
+    return render(request, 'profile.html', {'first_name': 'King', 'last_name': 'Elisha'})
