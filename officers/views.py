@@ -11,4 +11,5 @@ def profile(request):
 
 
 def reports(request):
+
     return render(request, 'reports.html', {'first_name': 'King', 'last_name': 'Elisha'})
