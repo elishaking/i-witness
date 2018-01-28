@@ -12,6 +12,7 @@ officers/migrations/*.py
 media/migrations/*.py
 !reports/migrations/__init__.py
 !accounts/migrations/__init__.py
+!accounts/migrations/0001_initial.py
 !witness/migrations/__init__.py
 !officers/migrations/__init__.py
 !media/migrations/__init__.py
