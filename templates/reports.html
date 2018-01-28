@@ -24,6 +24,7 @@
                                             <th>Title</th>
                                             <th>Message</th>
                                             <th>Location</th> <!-- convert to differnt cols - state, city, street, ... -->
+                                            <th>Time</th>
                                             <th>Witness</th>
                                         </thead>
                                         <tbody>
@@ -31,7 +32,8 @@
                                                 <tr>
                                                     <td>{{ report.title }}</td>
                                                     <td>{{ report.message }}</td>
-                                                    <td>{{ report.location }}</td>
+                                                    <td>{% firstof report.location 'Unknown' %}</td>
+                                                    <td>{{ report.time_created }}</td>
                                                     <td>{% firstof report.witness 'Anonymous' %}</td>
                                                 </tr>
                                             {% endfor %}
@@ -62,7 +64,7 @@
                                                 <tr>
                                                     <td>{{ report.title }}</td>
                                                     <!-- <td>{{ report.message }}</td> -->
-                                                    <td>{{ report.location }}</td>
+                                                    <td>{% firstof report.location 'Unknown' %}</td>
                                                     <td>{% firstof report.witness 'Anonymous' %}</td>
                                                 </tr>
                                             {% endfor %}
