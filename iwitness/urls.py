@@ -20,11 +20,20 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^api/accounts/', include('accounts.api.urls', namespace='accounts')),
-    url(r'^api/officers/', include('officers.api.urls', namespace='officers')),
-    url(r'^api/reports/', include('reports.api.urls', namespace='reports')),
-    url(r'^api/witness/', include('witness.api.urls', namespace='witness')),
-    url(r'^api/media/', include('media.api.urls', namespace='media'))
+
+    # url(r'^accounts/', include('accounts.urls', namespace='accounts')),
+    url(r'^officers/', include('officers.urls', namespace='officers')),
+    # url(r'^reports/', include('reports.urls', namespace='reports')),
+    # url(r'^witness/', include('witness.urls', namespace='witness')),
+    # url(r'^media/', include('media.urls', namespace='media')),
+
+    url(r'^api/', include([
+        url(r'^accounts/', include('accounts.api.urls')),
+        url(r'^officers/', include('officers.api.urls')),
+        url(r'^reports/', include('reports.api.urls')),
+        url(r'^witness/', include('witness.api.urls')),
+        url(r'^media/', include('media.api.urls')),
+    ])),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
