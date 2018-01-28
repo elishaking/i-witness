@@ -49,19 +49,19 @@
                     </div>
 
                     <ul class="nav">
-                        <li class="active">
+                        <li class="{{ a1 }}">
                             <a href="{% url 'officers:dashboard' %}">
                                 <i class="pe-7s-graph"></i>
                                 <p>Dashboard</p>
                             </a>
                         </li>
-                        <li>
+                        <li class="{{ a2 }}">
                             <a href="{% url 'officers:profile' %}">
                                 <i class="pe-7s-user"></i>
                                 <p>Profile</p>
                             </a>
                         </li>
-                        <li>
+                        <li class="{{ a3 }}">
                             <a href="{% url 'officers:reports' %}">
                                 <i class="pe-7s-note2"></i>
                                 <p>Reports</p>
@@ -189,7 +189,7 @@
 
                 <footer class="footer">
                     <div class="container-fluid">
-                        <nav class="pull-left">
+                        <!-- <nav class="pull-left">
                             <ul>
                                 <li>
                                     <a href="#">
@@ -212,10 +212,10 @@
                                     </a>
                                 </li>
                             </ul>
-                        </nav>
-                        <p class="copyright pull-right">
+                        </nav> -->
+                        <!-- <p class="copyright pull-right">
                             &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
-                        </p>
+                        </p> -->
                     </div>
                 </footer>
             </div>
