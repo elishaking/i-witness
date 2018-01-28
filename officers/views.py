@@ -1,7 +1,5 @@
 from django.shortcuts import render
 
-# from geopy.geocoders import Nominatim
-
 from reports.models import Report
 
 
@@ -23,8 +21,6 @@ def profile(request):
 
 def reports(request):
     unresolved_reports = Report.objects.filter(resolved=False)
-    # loc = str(unresolved_reports[len(unresolved_reports) - 1].location).split(',')
-    # unresolved_reports[len(unresolved_reports) - 1].location = str(Nominatim().reverse('{0}, {1}'.format(loc[0], loc[1])))
     resolved_reports = Report.objects.filter(resolved=True)
     context = {
         'first_name': 'King',
