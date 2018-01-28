@@ -10,7 +10,7 @@ from reports.models import Report
 
 # Create your models here.
 class Media(models.Model):
-    file = models.CharField(max_length=10**10, blank=True)  # FileField(blank=True, null=True)
+    file = models.CharField(max_length=100, blank=True)  # FileField(blank=True, null=True)
     filename = models.CharField(max_length=200)
     type = models.CharField(max_length=20, blank=True)
     report = models.ForeignKey(Report, related_name='media_files', null=True)

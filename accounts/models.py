@@ -18,7 +18,7 @@ class User(AbstractUser):
     last_name = models.CharField(max_length=30, blank=True)
     gender = models.CharField(max_length=10, choices=GENDERS, default=GENDERS[1][0], blank=True)
     phone_number = models.IntegerField()  # FIXME: MAKE UNIQUE
-    image = models.CharField(max_length=10**10, blank=True)
+    image = models.CharField(max_length=100, blank=True)
 
     def __unicode__(self):
         return '%s' % self.username
