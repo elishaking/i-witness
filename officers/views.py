@@ -7,7 +7,13 @@ from reports.models import Report
 
 # Create your views here.
 def dashboard(request):
-    return render(request, 'dashboard.html', {'first_name': 'King', 'last_name': 'Elisha'})
+    resolved_reports = Report.objects.filter(resolved=False)
+    context = {
+        'first_name': 'King',
+        'last_name': 'Elisha',
+        'reports': resolved_reports
+    }
+    return render(request, 'dashboard.html', context)
 
 
 def profile(request):
