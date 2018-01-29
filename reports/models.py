@@ -9,7 +9,7 @@ class Report(models.Model):
     title = models.CharField(max_length=50)
     message = models.CharField(max_length=250, blank=True)
     location = models.CharField(max_length=200)
-    time_created = models.DateTimeField(auto_created=True)
+    time_created = models.DateTimeField(auto_now_add=True)
     witness = models.ForeignKey(Witness, related_name='reports', null=True)
     resolved = models.BooleanField(default=False)
 
