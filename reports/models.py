@@ -15,8 +15,12 @@ class Report(models.Model):
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
-        loc = str(self.location).split(',')
-        self.location = str(Nominatim().reverse('{0}, {1}'.format(loc[0], loc[1])))
+        try:
+            loc = str(self.location).split(',')
+            self.location = str(Nominatim().reverse('{0}, {1}'.format(loc[0], loc[1])))
+        except:
+            pass
+
         super(Report, self).save()
 
     def __unicode__(self):

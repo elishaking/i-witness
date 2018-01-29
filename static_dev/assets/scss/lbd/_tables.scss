@@ -45,6 +45,9 @@
         min-width: 90px;
     }
     
+    > tbody > tr:hover{
+        cursor: pointer;
+    }
     > tbody > tr{
         position: relative;
         
