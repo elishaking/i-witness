@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 from reports.models import Report
+from media.models import Media
 
 
 # Create your views here.
@@ -33,11 +34,19 @@ def reports(request):
 
 
 def report_details(request):
-    report = Report.objects.filter(id=1)
+    report = Report.objects.get(pk=2)
+    media_urls = []
+    # print(dir(report.media_files))
+
+    for media_file in report.media_files.values():
+        # print(media_file)
+        media_urls.append(media_file['file'])
+
     context = {
         'first_name': 'King',
         'last_name': 'Elisha',
         'report': report,
+        'media_urls': media_urls,
         'a3': 'active'
     }
     return render(request, 'report_details.html', context)

@@ -15,50 +15,17 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="header">
-                                    <h4 class="title">{{ title }}</h4>
-                                    <p class="category">{{ message }}</p>
-                                    <p class="category">{{ location }}</p>
+                                    <h4 class="title">{{ report.title }}</h4>
+                                    <p>{{ report.message }}</p>
+                                    <p class="category">{{ report.location }}</p>
                                 </div>
                                 <div class="content">
-                                    {% for media_file in media_files %}
-                                        <img src="{{ media_file }}" alt="media_file"/>
+                                    {% for media_url in media_urls %}
+                                        <img src="{{ media_url }}" class="img-responsive" alt="media_file"/>
                                     {% endfor %}
                                 </div>
                             </div>
                         </div>
-    
-    
-                        <div class="col-md-12">
-                            <div class="card card-plain">
-                                <div class="header">
-                                    <h4 class="title">Resolved Reports</h4>
-                                    <p class="category">List of all resolved Reports</p>
-                                </div>
-                                <div class="content table-responsive table-full-width">
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <th>Title</th>
-                                            <!-- <th>Message</th> -->
-                                            <th>Location</th> <!-- convert to differnt cols - state, city, street, ... -->
-                                            <th>Witness</th>
-                                        </thead>
-                                        <tbody>
-                                            {% for report in resolved_reports %}
-                                                <tr>
-                                                    <td>{{ report.title }}</td>
-                                                    <!-- <td>{{ report.message }}</td> -->
-                                                    <td>{% firstof report.location 'Unknown' %}</td>
-                                                    <td>{% firstof report.witness 'Anonymous' %}</td>
-                                                </tr>
-                                            {% endfor %}
-                                        </tbody>
-                                    </table>
-    
-                                </div>
-                            </div>
-                        </div>
-    
-    
                     </div>
                 </div>
             </div>

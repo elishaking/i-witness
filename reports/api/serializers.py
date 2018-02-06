@@ -6,7 +6,7 @@ from media.api.serializers import MediaSerializer
 
 
 class ReportSerializer(serializers.ModelSerializer):
-    media_files = MediaSerializer(many=True)
+    # media_files = MediaSerializer(many=True)
 
     class Meta:
         model = Report
