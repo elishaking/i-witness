@@ -6,11 +6,11 @@ from media.api.serializers import MediaSerializer
 
 
 class ReportSerializer(serializers.ModelSerializer):
-    # media = MediaSerializer(many=True)
+    media_files = MediaSerializer(many=True)
 
     class Meta:
         model = Report
-        fields = ['id', 'title', 'message', 'location', 'witness']
+        fields = ['id', 'title', 'message', 'location', 'witness', 'media_files']
 
 
 class ReportCreateSerializer(serializers.ModelSerializer):

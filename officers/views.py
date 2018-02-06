@@ -30,3 +30,14 @@ def reports(request):
         'a3': 'active'
     }
     return render(request, 'reports.html', context)
+
+
+def report_details(request):
+    report = Report.objects.filter(id=1)
+    context = {
+        'first_name': 'King',
+        'last_name': 'Elisha',
+        'report': report,
+        'a3': 'active'
+    }
+    return render(request, 'report_details.html', context)
