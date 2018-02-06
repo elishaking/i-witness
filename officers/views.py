@@ -34,7 +34,7 @@ def reports(request):
 
 
 def report_details(request):
-    report = Report.objects.get(pk=2)
+    report = Report.objects.get(pk=5)
     media_urls = []
     # print(dir(report.media_files))
 
