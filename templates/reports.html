@@ -29,7 +29,7 @@
                                         </thead>
                                         <tbody>
                                             {% for report in reports %}
-                                                <tr onclick=document.location.href="{% url 'officers:report_detail' %}">
+                                                <tr onclick=document.location.href="{% url 'officers:report_detail' report.id %}">
                                                     <td>{{ report.title }}</td>
                                                     <td>{{ report.message }}</td>
                                                     <td>{% firstof report.location 'Unknown' %}</td>

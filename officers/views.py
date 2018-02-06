@@ -33,8 +33,8 @@ def reports(request):
     return render(request, 'reports.html', context)
 
 
-def report_details(request):
-    report = Report.objects.get(pk=5)
+def report_details(request, pk):
+    report = Report.objects.get(pk=pk)
     media_urls = []
     # print(dir(report.media_files))
 
