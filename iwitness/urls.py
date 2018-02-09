@@ -23,7 +23,8 @@ from . import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
-    url(r'^privacy/$', views.privacy),
+    url(r'^$', views.index),
+    url(r'^privacy/$', views.privacy, name='privacy'),
 
     # url(r'^accounts/', include('accounts.urls', namespace='accounts')),
     url(r'^officers/', include('officers.urls', namespace='officers')),
